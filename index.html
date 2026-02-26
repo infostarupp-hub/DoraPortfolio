@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Dora Cheng | Freelance Designer&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;https://gs.jurieo.com/gemini/fonts-googleapis/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;script src=&quot;https://unpkg.com/lucide@latest&quot;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        :root {
+            --bg-primary: #F8F0E5;
+            --bg-secondary: #EADBC8;
+            --accent-warm: #DAC0A3;
+            --navy: #102C57;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--navy);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .line-art-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .category-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(16, 44, 87, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--bg-secondary);
+            border-color: var(--navy);
+        }
+
+        .card-image-preview {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; 
+            transition: opacity 0.4s ease, transform 0.6s ease;
+            z-index: 0;
+        }
+
+        .category-card:hover .card-image-preview {
+            opacity: 0.25;
+            transform: scale(1.05);
+        }
+
+        .category-card::after {
+            content: 'VIEW PROJECT';
+            position: absolute;
+            inset: 0;
+            background: rgba(16, 44, 87, 0.85);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.2em;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+        }
+
+        .category-card:hover::after {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--navy);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .filter-btn.active {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-warm);
+            border-radius: 10px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #lightbox {
+            display: none;
+            backdrop-filter: blur(10px);
+            background-color: rgba(248, 240, 229, 0.95);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;overflow-x-hidden&quot;&gt;
+
+    &lt;div class=&quot;line-art-bg&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 800 800&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;w-full h-full&quot;&gt;
+            &lt;path d=&quot;M100 200 C 200 100, 400 300, 600 100 S 800 400, 700 600&quot; stroke=&quot;#102C57&quot; fill=&quot;transparent&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;circle cx=&quot;200&quot; cy=&quot;500&quot; r=&quot;150&quot; stroke=&quot;#102C57&quot; fill=&quot;transparent&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;path d=&quot;M500 700 Q 600 400, 300 300 T 100 100&quot; stroke=&quot;#102C57&quot; fill=&quot;transparent&quot; stroke-width=&quot;0.5&quot;/&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;nav class=&quot;fixed top-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-multiply&quot;&gt;
+        &lt;div class=&quot;text-2xl font-bold tracking-tighter&quot;&gt;DORA CHENG&lt;/div&gt;
+        &lt;div class=&quot;hidden md:flex gap-10 font-medium text-sm tracking-widest uppercase&quot;&gt;
+            &lt;a href=&quot;#work&quot; class=&quot;nav-link&quot;&gt;Neural / Work&lt;/a&gt;
+            &lt;a href=&quot;#about&quot; class=&quot;nav-link&quot;&gt;Logic / About&lt;/a&gt;
+            &lt;a href=&quot;#contact&quot; class=&quot;nav-link&quot;&gt;Connect&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;md:hidden&quot; id=&quot;mobileMenuBtn&quot;&gt;
+            &lt;i data-lucide=&quot;menu&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- Hero Section --&gt;
+    &lt;section class=&quot;min-h-screen flex flex-col justify-center px-6 md:px-12 pt-20&quot;&gt;
+        &lt;div class=&quot;max-w-4xl&quot;&gt;
+            &lt;span class=&quot;text-sm tracking-[0.3em] uppercase opacity-70 mb-4 block&quot;&gt;Freelance Designer&lt;/span&gt;
+            &lt;h1 class=&quot;text-6xl md:text-8xl lg:text-9xl font-serif mb-8 leading-tight&quot;&gt;
+                Synthesized &lt;span class=&quot;italic font-normal&quot;&gt;Intelligence&lt;/span&gt;.
+            &lt;/h1&gt;
+            &lt;p class=&quot;text-lg md:text-xl max-w-xl leading-relaxed opacity-80 mb-10&quot;&gt;
+                I help brands navigate the intersection of generative technology and organic design. I create AI-driven visual identities that retain a human soul.
+            &lt;/p&gt;
+            &lt;div class=&quot;flex gap-4&quot;&gt;
+                &lt;a href=&quot;#work&quot; class=&quot;bg-[#102C57] text-white px-8 py-4 rounded-full text-sm tracking-widest uppercase hover:bg-opacity-90 transition-all flex items-center gap-2&quot;&gt;
+                    Access Archives &lt;i data-lucide=&quot;arrow-right&quot; class=&quot;w-4 h-4&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Selected Works --&gt;
+    &lt;section id=&quot;work&quot; class=&quot;py-24 px-6 md:px-12 bg-[#EADBC8] bg-opacity-30&quot;&gt;
+        &lt;div class=&quot;max-w-7xl mx-auto&quot;&gt;
+            &lt;div class=&quot;flex flex-col md:flex-row justify-between items-end mb-16 gap-8&quot;&gt;
+                &lt;div&gt;
+                    &lt;h2 class=&quot;text-4xl md:text-5xl font-serif mb-4&quot;&gt;Selected Outputs&lt;/h2&gt;
+                    &lt;p class=&quot;opacity-70 max-w-md&quot;&gt;Categorized visual systems evolved through algorithmic precision and human intuition.&lt;/p&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&quot;flex flex-wrap gap-2 text-xs tracking-widest uppercase&quot;&gt;
+                    &lt;button class=&quot;filter-btn active border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('all')&quot;&gt;All&lt;/button&gt;
+                    &lt;button class=&quot;filter-btn border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('beauty')&quot;&gt;Beauty&lt;/button&gt;
+                    &lt;button class=&quot;filter-btn border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('f&amp;b')&quot;&gt;F&amp;B&lt;/button&gt;
+                    &lt;button class=&quot;filter-btn border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('medical')&quot;&gt;Medical&lt;/button&gt;
+                    &lt;button class=&quot;filter-btn border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('education')&quot;&gt;Education&lt;/button&gt;
+                    &lt;button class=&quot;filter-btn border border-[#102C57] px-6 py-2 rounded-full transition-all&quot; onclick=&quot;filterGallery('other')&quot;&gt;Other&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Portfolio Grid --&gt;
+            &lt;div class=&quot;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8&quot; id=&quot;portfolioGrid&quot;&gt;
+                
+                &lt;!-- 1. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/V0KnhpdC/Gemini-Generated-Image-pc2lgcpc2lgcpc2l.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/V0KnhpdC/Gemini-Generated-Image-pc2lgcpc2lgcpc2l.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;sparkles&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 2. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/35V0d4N5/xb.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/35V0d4N5/xb.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;soup&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 3. Medical --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;medical&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/B2ZDndqp/uhoi.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/B2ZDndqp/uhoi.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;clipboard-list&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 4. Education --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;education&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/fzmpq24k/Whats-App-Image-2026-02-26-at-00-09-22.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/fzmpq24k/Whats-App-Image-2026-02-26-at-00-09-22.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;book-marked&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 5. Other --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;other&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/ymNCmJCS/Gemini-Generated-Image-405a8g405a8g405a.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/ymNCmJCS/Gemini-Generated-Image-405a8g405a8g405a.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;layers&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 6. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/YBScT5xh/Gemini-Generated-Image-xv3g1gxv3g1gxv3g.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/YBScT5xh/Gemini-Generated-Image-xv3g1gxv3g1gxv3g.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;sparkles&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 7. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/gLGYpN2F/Whats-App-Image-2026-02-26-at-00-12-39-1.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/gLGYpN2F/Whats-App-Image-2026-02-26-at-00-12-39-1.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;utensils&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 8. Medical --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;medical&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/NgmYfj9x/PHOTO-2026-02-24-02-26-13-1.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/NgmYfj9x/PHOTO-2026-02-24-02-26-13-1.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;activity&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 9. Education --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;education&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/7d87rDWt/PHOTO-2026-02-24-02-28-11.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/7d87rDWt/PHOTO-2026-02-24-02-28-11.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;graduation-cap&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 10. Other --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;other&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/2Yv2ySbh/PHOTO-2026-02-24-02-26-14-1.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/2Yv2ySbh/PHOTO-2026-02-24-02-26-14-1.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;layout&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 11. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/ymvmm5YM/PHOTO-2026-02-24-02-26-13-2.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/ymvmm5YM/PHOTO-2026-02-24-02-26-13-2.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;brush&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 12. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/prkgXfB2/Whats-App-Image-2026-02-26-at-00-18-03-1.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/prkgXfB2/Whats-App-Image-2026-02-26-at-00-18-03-1.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;beef&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 13. Medical --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;medical&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/20fZTWKz/PHOTO-2026-02-24-02-26-13-7.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/20fZTWKz/PHOTO-2026-02-24-02-26-13-7.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;stethoscope&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 14. Education --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;education&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/rRCK2HTy/PHOTO-2026-02-24-02-28-51.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/rRCK2HTy/PHOTO-2026-02-24-02-28-51.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;book&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 15. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/LbLR36n/2.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/LbLR36n/2.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;wand-2&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 16. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/SDQrZNjX/2.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/SDQrZNjX/2.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;chef-hat&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 17. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/gFTch7pV/PHOTO-2026-02-24-02-26-13.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/gFTch7pV/PHOTO-2026-02-24-02-26-13.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;sparkles&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 18. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/N63Fztf0/1.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/N63Fztf0/1.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;egg&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 19. F&amp;B --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;f&amp;b&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/ynFxxctp/Whats-App-Image-2026-02-26-at-00-13-28-1.jpg')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/ynFxxctp/Whats-App-Image-2026-02-26-at-00-13-28-1.jpg');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;cup-soda&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 20. Beauty --&gt;
+                &lt;div class=&quot;portfolio-item reveal&quot; data-category=&quot;beauty&quot;&gt;
+                    &lt;div class=&quot;category-card aspect-[4/5] p-8 mb-4&quot; 
+                         onclick=&quot;openLightbox('https://i.ibb.co/xthyNqRt/dg.png')&quot;&gt;
+                        &lt;div class=&quot;card-image-preview&quot; style=&quot;background-image: url('https://i.ibb.co/xthyNqRt/dg.png');&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;card-content&quot;&gt;
+                            &lt;div class=&quot;flex justify-between items-start&quot;&gt;
+                                &lt;i data-lucide=&quot;heart&quot; class=&quot;w-8 h-8 text-[#102C57]&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- About Section --&gt;
+    &lt;section id=&quot;about&quot; class=&quot;py-24 px-6 md:px-12 flex flex-col lg:flex-row gap-16 items-center&quot;&gt;
+        &lt;div class=&quot;lg:w-1/2&quot;&gt;
+            &lt;div class=&quot;relative inline-block&quot;&gt;
+                &lt;div class=&quot;w-72 h-96 md:w-96 md:h-[500px] border border-[#102C57] flex items-center justify-center bg-[#DAC0A3] overflow-hidden rounded-tr-[100px]&quot;&gt;
+                    &lt;img src=&quot;https://i.ibb.co/LdmxZn3n/ji.png&quot; alt=&quot;Dora Cheng Icon&quot; class=&quot;w-full h-full object-cover&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;absolute -bottom-6 -right-6 w-32 h-32 border border-[#102C57] bg-[#F8F0E5] p-4 flex items-center text-center italic text-xs leading-tight&quot;&gt;
+                    &quot;AI is the brush; human intuition is the hand.&quot;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;lg:w-1/2 reveal&quot;&gt;
+            &lt;h2 class=&quot;text-5xl font-serif mb-8 italic&quot;&gt;About Dora&lt;/h2&gt;
+            &lt;p class=&quot;text-lg leading-relaxed mb-6&quot;&gt;
+                Based at the convergence of technology and fine art, I specialize in building neural-powered visual systems for independent businesses.
+            &lt;/p&gt;
+            &lt;p class=&quot;opacity-80 mb-8&quot;&gt;
+                My approach leverages generative algorithms to explore thousands of iterations in seconds, ensuring that the final design is the most evolved version of your brand's logic. By blending high-tech capabilities with an organic aesthetic, I create identities that feel both futuristic and deeply familiar.
+            &lt;/p&gt;
+            &lt;div class=&quot;grid grid-cols-2 gap-8 mb-10&quot;&gt;
+                &lt;div&gt;
+                    &lt;h4 class=&quot;font-bold text-sm tracking-widest uppercase mb-2&quot;&gt;Neural Expertise&lt;/h4&gt;
+                    &lt;ul class=&quot;text-sm opacity-70 space-y-1&quot;&gt;
+                        &lt;li&gt;AI Image Synthesis&lt;/li&gt;
+                        &lt;li&gt;Generative Branding&lt;/li&gt;
+                        &lt;li&gt;Neural Illustration&lt;/li&gt;
+                        &lt;li&gt;Prompt Architecture&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 class=&quot;font-bold text-sm tracking-widest uppercase mb-2&quot;&gt;Location&lt;/h4&gt;
+                    &lt;ul class=&quot;text-sm opacity-70 space-y-1&quot;&gt;
+                        &lt;li&gt;Remote Workspace&lt;/li&gt;
+                        &lt;li&gt;Global Network&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Contact Section --&gt;
+    &lt;section id=&quot;contact&quot; class=&quot;py-24 px-6 md:px-12 bg-[#102C57] text-[#F8F0E5]&quot;&gt;
+        &lt;div class=&quot;max-w-4xl mx-auto text-center reveal&quot;&gt;
+            &lt;h2 class=&quot;text-5xl md:text-7xl font-serif mb-12&quot;&gt;Let's synthesize &lt;br&gt;something &lt;span class=&quot;italic&quot;&gt;new&lt;/span&gt;.&lt;/h2&gt;
+            &lt;p class=&quot;text-xl mb-12 opacity-80&quot;&gt;Currently accepting new AI design partnerships for 2024.&lt;/p&gt;
+            
+            &lt;div class=&quot;flex flex-col md:flex-row justify-center gap-12 items-center&quot;&gt;
+                &lt;a href=&quot;mailto:sirod.chh@gmail.com&quot; class=&quot;text-2xl font-serif hover:opacity-50 transition-all border-b border-[#F8F0E5]&quot;&gt;sirod.chh@gmail.com&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;footer class=&quot;py-12 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase opacity-50&quot;&gt;
+        &lt;div&gt;© 2024 DORA CHENG / NEURAL DESIGN. ALL RIGHTS RESERVED.&lt;/div&gt;
+        &lt;div class=&quot;flex gap-8 mt-4 md:mt-0&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;hover:opacity-100&quot;&gt;Privacy Policy&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;hover:opacity-100&quot;&gt;Terms of Service&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+
+    &lt;!-- Lightbox Modal --&gt;
+    &lt;div id=&quot;lightbox&quot; class=&quot;fixed inset-0 z-[200] flex flex-col items-center justify-center p-6 md:p-12&quot; onclick=&quot;closeLightbox()&quot;&gt;
+        &lt;button class=&quot;absolute top-8 right-8 text-[#102C57] hover:scale-110 transition-transform&quot; onclick=&quot;closeLightbox()&quot;&gt;
+            &lt;i data-lucide=&quot;x&quot; class=&quot;w-8 h-8&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;max-w-6xl w-full h-full flex flex-col items-center justify-center&quot; onclick=&quot;event.stopPropagation()&quot;&gt;
+            &lt;img id=&quot;lightboxImg&quot; src=&quot;&quot; alt=&quot;Full Project Image&quot; class=&quot;max-w-full max-h-[90vh] object-contain shadow-2xl rounded-sm&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Mobile Menu --&gt;
+    &lt;div id=&quot;mobileMenu&quot; class=&quot;fixed inset-0 bg-[#F8F0E5] z-[100] hidden flex-col items-center justify-center p-12&quot;&gt;
+        &lt;button class=&quot;absolute top-10 right-10&quot; id=&quot;closeMenuBtn&quot;&gt;
+            &lt;i data-lucide=&quot;x&quot; class=&quot;w-8 h-8&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;flex flex-col gap-10 text-center text-4xl font-serif italic&quot;&gt;
+            &lt;a href=&quot;#work&quot; class=&quot;mobile-link&quot;&gt;Work&lt;/a&gt;
+            &lt;a href=&quot;#about&quot; class=&quot;mobile-link&quot;&gt;About&lt;/a&gt;
+            &lt;a href=&quot;#contact&quot; class=&quot;mobile-link&quot;&gt;Contact&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        lucide.createIcons();
+
+        const revealElements = () =&gt; {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element =&gt; {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop &lt; windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealElements);
+        window.onload = revealElements;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(imgUrl) {
+            lightboxImg.src = imgUrl;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) =&gt; {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn =&gt; {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase() === category) {
+                    btn.classList.add('active');
+                } else if (category === 'all' &amp;&amp; btn.innerText.toLowerCase() === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+
+            items.forEach(item =&gt; {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() =&gt; {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() =&gt; {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.onclick = () =&gt; {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        };
+
+        const closeMobileMenu = () =&gt; {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        };
+
+        closeMenuBtn.onclick = closeMobileMenu;
+        mobileLinks.forEach(link =&gt; link.onclick = closeMobileMenu);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
